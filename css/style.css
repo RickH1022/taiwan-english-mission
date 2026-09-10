@@ -268,7 +268,7 @@ h1 { margin: 7px 0 14px; font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1.14;
   .trip-card div { gap: 1px 5px; padding: 8px 9px; }
   .trip-card span { font-size: .68rem; }
   .trip-card strong { font-size: .9rem; }
-  .trip-card small { font-size: .68rem; }
+  .trip-card small { grid-column: 1 / -1; align-self: auto; font-size: .68rem; text-align: left; }
   .question-screen .trip-drawer { column-gap: 9px; }
   .video-stage { width: 100%; padding-right: 16px; padding-left: 16px; }
   .full-intro-video { max-height: calc(100vh - 72px); }
