@@ -1,6 +1,6 @@
 (function () {
   const app = document.querySelector("#app"), m = window.MISSION_01;
-  const NORMAL_RATE = 1, SLOW_RATE = .78, letters = ["A", "B", "C", "D"];
+  const NORMAL_RATE = 1, SLOW_RATE = .58, letters = ["A", "B", "C", "D"];
   let run = null, videoStageCleanup = null, fullVideoStage = null, hasEnteredFullSimulation = false;
   const activeTimers = new Set();
   const esc = value => String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -14,7 +14,7 @@
   const cancelTimer = timerId => { if (!timerId) return; window.clearTimeout(timerId); activeTimers.delete(timerId); };
   const clearActiveTimers = () => { activeTimers.forEach(timerId => window.clearTimeout(timerId)); activeTimers.clear(); };
   const exitButtonMarkup = (label = "結束並返回首頁", isEntry = false) => `<footer class="exit-home-footer${isEntry ? " entry-exit-action" : ""}"><button class="text-button exit-home-button" data-a="home">${label}</button></footer>`;
-  function addExitHomeButton() { const screen = app.querySelector(".screen"); if (!screen || screen.classList.contains("home-screen") || screen.classList.contains("lesson-screen")) return; const completed = screen.classList.contains("results-screen"), isEntry = screen.classList.contains("trip-screen"), label = completed ? "返回首頁" : "結束並返回首頁", homeButtons = [...app.querySelectorAll('[data-a="home"]')]; if (homeButtons.length) { homeButtons.slice(0, -1).forEach(button => button.remove()); const button = homeButtons.at(-1); button.textContent = label; button.classList.add("exit-home-button"); const footer = document.createElement("footer"); footer.className = `exit-home-footer${isEntry ? " entry-exit-action" : ""}`; button.replaceWith(footer); footer.append(button); return; } screen.insertAdjacentHTML("beforeend", exitButtonMarkup(label, isEntry)); }
+  function addExitHomeButton() { const screen = app.querySelector(".screen"); if (!screen || screen.classList.contains("home-screen") || screen.classList.contains("lesson-screen") || screen.matches(".adjustment-screen, .approach-screen, .counter-arrival")) return; const completed = screen.classList.contains("results-screen"), isEntry = screen.classList.contains("trip-screen"), label = completed ? "返回首頁" : "結束並返回首頁", homeButtons = [...app.querySelectorAll('[data-a="home"]')]; if (homeButtons.length) { homeButtons.slice(0, -1).forEach(button => button.remove()); const button = homeButtons.at(-1); button.textContent = label; button.classList.add("exit-home-button"); const footer = document.createElement("footer"); footer.className = `exit-home-footer${isEntry ? " entry-exit-action" : ""}`; button.replaceWith(footer); footer.append(button); return; } screen.insertAdjacentHTML("beforeend", exitButtonMarkup(label, isEntry)); }
   const renderView = (html, { scrollTop = true } = {}) => { if (videoStageCleanup) videoStageCleanup(); app.innerHTML = html; addExitHomeButton(); app.querySelectorAll(".officer-visual, .full-question-screen .counter-avatar, .full-ending .counter-avatar").forEach(addOfficerPhoto); if (scrollTop) window.scrollTo({ top: 0, behavior: "auto" }); };
   const audioButton = (text, role = "user", label = "播放英文") => `<button aria-label="${label}" data-a="speak" data-role="${role}" data-text="${esc(text)}">🔊</button>`;
   const progress = () => missionStorage.getProgress();

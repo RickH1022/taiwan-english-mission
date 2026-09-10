@@ -196,12 +196,13 @@ h1 { margin: 7px 0 14px; font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1.14;
 .exit-confirmation { position: fixed; z-index: 20; inset: 0; display: grid; place-items: center; padding: 22px; background: rgba(5, 10, 23, .72); }.exit-confirmation-card { width: min(100%, 380px); padding: 22px; border: 1px solid rgba(165,184,222,.26); border-radius: 18px; background: #15203b; box-shadow: 0 18px 48px rgba(0,0,0,.35); }.exit-confirmation-card h2 { margin: 0; font-size: 1.2rem; }.exit-confirmation-card p { margin: 10px 0 20px; color: var(--muted); line-height: 1.55; }.exit-confirmation-card > div { display: grid; gap: 9px; }.exit-confirmation-card .button { width: 100%; }
 
 .trip-screen, .training-screen { justify-content: center; }
-.trip-card { display: grid; gap: 0; margin: 22px 0; overflow: hidden; border: 1px solid var(--line); border-radius: 15px; background: rgba(21,31,58,.86); }
-.trip-card div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
-.trip-card div:last-child { border-bottom: 0; }
+.trip-card { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin: 22px 0; overflow: hidden; border: 1px solid var(--line); border-radius: 15px; background: rgba(21,31,58,.86); }
+.trip-card div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 7px; min-width: 0; padding: 10px; border-bottom: 1px solid var(--line); }
+.trip-card div:nth-last-child(2):nth-child(odd), .trip-card div:last-child { border-bottom: 0; }
+.trip-card div:nth-child(odd) { border-right: 1px solid var(--line); }
 .trip-card span { grid-column: 1 / -1; color: var(--muted); font-size: .75rem; font-weight: 800; }
 .trip-card strong { color: var(--primary); font-size: 1rem; line-height: 1.25; overflow-wrap: anywhere; }
-.trip-card small { align-self: end; color: var(--muted); font-size: .78rem; }
+.trip-card small { align-self: end; min-width: 0; color: var(--muted); font-size: .74rem; overflow-wrap: anywhere; text-align: right; }
 .trip-drawer { display: grid; gap: 0; }
 .trip-drawer div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 8px; padding: 9px 0; border-bottom: 1px solid rgba(202, 215, 255, .1); }
 .trip-drawer div:last-child { border-bottom: 0; }
@@ -249,9 +250,6 @@ h1 { margin: 7px 0 14px; font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1.14;
 
 @media (min-width: 600px) {
   .screen { padding-right: 34px; padding-left: 34px; }
-  .trip-card { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .trip-card div:nth-last-child(2):nth-child(odd), .trip-card div:last-child { border-bottom: 0; }
-  .trip-card div:nth-child(odd) { border-right: 1px solid var(--line); }
   .trip-drawer { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; }
   .trip-drawer div:nth-last-child(2):nth-child(odd), .trip-drawer div:last-child { border-bottom: 0; }
 }
@@ -265,6 +263,13 @@ h1 { margin: 7px 0 14px; font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1.14;
 }
 
 @media (max-width: 599px) {
+  .trip-screen { padding-top: 24px; padding-bottom: 32px; }
+  .trip-card { margin: 16px 0 20px; }
+  .trip-card div { gap: 1px 5px; padding: 8px 9px; }
+  .trip-card span { font-size: .68rem; }
+  .trip-card strong { font-size: .9rem; }
+  .trip-card small { font-size: .68rem; }
+  .question-screen .trip-drawer { column-gap: 9px; }
   .video-stage { width: 100%; padding-right: 16px; padding-left: 16px; }
   .full-intro-video { max-height: calc(100vh - 72px); }
   .entry-exit-action { margin-top: 24px; }
