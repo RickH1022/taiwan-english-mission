@@ -26,7 +26,7 @@ button { font: inherit; }
 .app-shell { width: min(100%, 560px); min-height: 100vh; margin: 0 auto; }
 .app-shell:has(.question-screen), .app-shell:has(.video-stage) { width: 100%; max-width: none; }
 
-.screen { min-height: 100vh; padding: 32px 22px 40px; display: flex; flex-direction: column; }
+.screen { min-height: 100vh; min-height: 100dvh; padding: 32px 22px 40px; display: flex; flex-direction: column; }
 
 .home-screen { justify-content: center; }
 
@@ -263,6 +263,7 @@ h1 { margin: 7px 0 14px; font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1.14;
 }
 
 @media (max-width: 599px) {
+  .exit-home-footer { padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
   .trip-screen { padding-top: 24px; padding-bottom: 32px; }
   .trip-card { margin: 16px 0 20px; }
   .trip-card div { gap: 1px 5px; padding: 8px 9px; }
