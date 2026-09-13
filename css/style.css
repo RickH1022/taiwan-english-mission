@@ -264,6 +264,7 @@ h1 { margin: 7px 0 14px; font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1.14;
 
 @media (max-width: 599px) {
   .exit-home-footer { padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
+  .full-intro [data-a="start-full"] { margin-bottom: calc(20px + env(safe-area-inset-bottom)); }
   .trip-screen { padding-top: 24px; padding-bottom: 32px; }
   .trip-card { margin: 16px 0 20px; }
   .trip-card div { gap: 1px 5px; padding: 8px 9px; }
