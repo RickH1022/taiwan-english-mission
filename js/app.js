@@ -1,6 +1,7 @@
 (function () {
   const app = document.querySelector("#app"), m = window.MISSION_01;
-  const NORMAL_RATE = 1, SLOW_RATE = .58, letters = ["A", "B", "C", "D"];
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const NORMAL_RATE = 1, SLOW_RATE = isIOS ? .58 : .72, letters = ["A", "B", "C", "D"];
   let run = null, videoStageCleanup = null, fullVideoStage = null, hasEnteredFullSimulation = false;
   const activeTimers = new Set();
   const esc = value => String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
